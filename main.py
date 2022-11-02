@@ -8,7 +8,7 @@ def check_balance(address, number, web3):
     try:
         balance = web3.eth.get_balance(address)
         humanReadable = web3.fromWei(balance,'ether')
-        cprint(f'{number}. {address} : {humanReadable}', 'yellow')
+        cprint(f'{number}. {address} : {humanReadable}', 'white')
 
     except Exception as error:
         cprint(f'{number}. {address} = {error}', 'red')
