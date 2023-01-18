@@ -1,7 +1,6 @@
 import time
 import ccxt
 from termcolor import cprint
-from web3 import Web3
 import random
 
 
@@ -44,9 +43,8 @@ if __name__ == "__main__":
 
     cprint('\a\n/// start withdrawing...', 'white')
     for wallet in wallets_list:
-        address = web3.toChecksumAddress(wallet)
         amount_to_withdrawal = round(random.uniform(0.001, 0.002), 6) # amount from ... to ...
-        binance_withdraw(address, amount_to_withdrawal, symbolWithdraw, network, API_KEY, API_SECRET)
+        binance_withdraw(wallet, amount_to_withdrawal, symbolWithdraw, network, API_KEY, API_SECRET)
         time.sleep(random.randint(10, 30))
 
 
