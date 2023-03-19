@@ -17,11 +17,11 @@ def binance_withdraw(address, amount_to_withdrawal, symbolWithdraw, network, API
 
     try:
         account_binance.withdraw(
-            code = symbolWithdraw,
-            amount = amount_to_withdrawal,
+            code    = symbolWithdraw,
+            amount  = amount_to_withdrawal,
             address = address,
-            tag = None, 
-            params = {
+            tag     = None, 
+            params  = {
                 "network": network
             }
         )
@@ -35,15 +35,17 @@ if __name__ == "__main__":
         wallets_list = [row.strip() for row in f]
 
     symbolWithdraw = 'ETH'
-    network = 'Arbitrum'
+    network        = 'ARBITRUM' # ETH | BSC | AVAXC | MATIC | ARBITRUM | OPTIMISM | APT
 
     # api_keys of binance
-    API_KEY = "your_api_key"
-    API_SECRET = "your_api_secret"
+    API_KEY     = "your_api_key"
+    API_SECRET  = "your_api_secret"
+    AMOUNT_FROM = 0.001
+    AMOUNT_TO   = 0.002
 
     cprint('\a\n/// start withdrawing...', 'white')
     for wallet in wallets_list:
-        amount_to_withdrawal = round(random.uniform(0.001, 0.002), 6) # amount from ... to ...
+        amount_to_withdrawal = round(random.uniform(AMOUNT_FROM, AMOUNT_TO), 6) # amount from ... to ...
         binance_withdraw(wallet, amount_to_withdrawal, symbolWithdraw, network, API_KEY, API_SECRET)
         time.sleep(random.randint(10, 30))
 
